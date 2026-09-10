@@ -14,7 +14,7 @@ const AdminLogin = () => {
     setError('');
 
     try {
-     const res = await axios.post('https://abcautismbehavioralcenter.com/admin-login/', {
+     const res = await axios.post('https://https://abcautismbehavioralcenter.com/admin-login/', {
   phone: credentials.phone,
   password: credentials.password
 });

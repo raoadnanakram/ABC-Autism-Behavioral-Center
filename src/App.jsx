@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -23,15 +23,8 @@ import Media from './pages/Media';
 import Events from './pages/Events';
 import Testimonials from './pages/Testimonials';
 
-/* =========================================================
-   ADMIN IMPORTS
-   ========================================================= */
 import AdminLogin from './pages/AdminLogin';
 import AdminPanel from './pages/AdminPanel';
-
-/* =========================================================
-   TEMPORARY PAGE COMPONENT
-   ========================================================= */
 
 const SimplePage = ({ title, description }) => {
   return (
@@ -40,7 +33,6 @@ const SimplePage = ({ title, description }) => {
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
           {title}
         </h1>
-
         {description && (
           <p className="text-gray-600 max-w-3xl leading-7">
             {description}
@@ -65,21 +57,14 @@ const EarlyIntervention = () => <SimplePage title="Early Intervention Program" d
 const Condition = () => <SimplePage title="Condition" description="Information about different conditions." />;
 const News = () => <SimplePage title="News & Events" description="Latest news and events." />;
 
-/* =========================================================
-   MAIN WEBSITE LAYOUT
-   ========================================================= */
-
 const WebsiteLayout = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-
       <div className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<AboutUs />} />
-          
-          {/* SERVICES */}
           <Route path="/services" element={<Services />} />
           <Route path="/services/center-based" element={<CenterBased />} />
           <Route path="/services/home-based" element={<HomeBased />} />
@@ -91,49 +76,29 @@ const WebsiteLayout = () => {
           <Route path="/services/adaptive-fitness" element={<AdaptiveFitness />} />
           <Route path="/services/speech-therapy" element={<SpeechTherapy />} />
           <Route path="/services/early-intervention" element={<EarlyIntervention />} />
-
-          {/* OTHER PAGES */}
           <Route path="/what-is-autism" element={<WhatIsAutism />} />
           <Route path="/condition" element={<Condition />} />
           <Route path="/condition/speech-delay" element={<SpeechDelay />} />
           <Route path="/condition/adhd" element={<ADHD />} />
-          
           <Route path="/news" element={<News />} />
           <Route path="/news/media" element={<Media />} />
           <Route path="/news/events" element={<Events />} />
           <Route path="/news/testimonials" element={<Testimonials />} />
-
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogDetails />} />
           <Route path="/career" element={<Careers />} />
-          
           <Route path="/policies" element={<OurPolicies />} />
           <Route path="/about-us/our-policy" element={<OurPolicies />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/thank-you" element={<ThankYou />} />
-
-          {/* 404 */}
-          <Route
-            path="*"
-            element={
-              <SimplePage
-                title="404 - Page Not Found"
-                description="The page you are looking for does not exist."
-              />
-            }
-          />
+          <Route path="*" element={<SimplePage title="404 - Page Not Found" description="The page you are looking for does not exist." />} />
         </Routes>
       </div>
-
       <WhatsAppFloat />
       <Footer />
     </div>
   );
 };
-
-/* =========================================================
-   APP
-   ========================================================= */
 
 function App() {
   return (
@@ -141,10 +106,8 @@ function App() {
       <ToastContainer position="top-right" autoClose={3000} />
       <Routes>
         <Route path="/admin-login" element={<AdminLogin />} />
-        {/* Support both /admin and /admin-panel */}
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/admin-panel" element={<AdminPanel />} />
-        
         <Route path="*" element={<WebsiteLayout />} />
       </Routes>
     </Router>

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const API_BASE = 'https://mvm8qwe9os.c37.airoapp.ai/?preview=1';
+const API_BASE = 'https://mvm8qwe9os.preview.c37.airoapp.ai';
 
 const AdminPanel = () => {
   const navigate = useNavigate();
